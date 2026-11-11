@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+ <queries><intent><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LEANBACK_LAUNCHER"/></intent><intent><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent></queries><uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/><uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/><uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+ <uses-permission android:name="android.permission.INTERNET"/>
+ <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+ <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+ <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+ <uses-feature android:name="android.software.leanback" android:required="false"/>
+ <application android:banner="@drawable/wallpaper" android:icon="@drawable/launcher_icon" android:theme="@style/AppTheme" android:label="Mono TV" android:allowBackup="false" android:hardwareAccelerated="true">
+  <activity android:name=".MainActivity" android:exported="true" android:launchMode="singleTask" android:screenOrientation="landscape">
+   <intent-filter android:priority="9999"><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.HOME"/><category android:name="android.intent.category.DEFAULT"/><category android:name="android.intent.category.LEANBACK_LAUNCHER"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter>
+  </activity>
+  <activity android:name=".InputSelectorActivity" android:theme="@style/OverlayTheme" android:exported="true" android:excludeFromRecents="true" android:launchMode="singleInstance" android:screenOrientation="landscape">
+   <intent-filter><action android:name="com.android.tv.action.VIEW_INPUTS"/><category android:name="android.intent.category.DEFAULT"/></intent-filter>
+  </activity>
+  <service android:name=".InputKeyInterceptService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:exported="true"><intent-filter><action android:name="android.accessibilityservice.AccessibilityService"/></intent-filter><meta-data android:name="android.accessibilityservice" android:resource="@xml/input_service"/></service>
+ </application>
+</manifest>

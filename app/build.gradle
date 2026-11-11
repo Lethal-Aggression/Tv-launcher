@@ -1,0 +1,8 @@
+plugins { id 'com.android.application' }
+android {
+ namespace 'com.d4cx.tvlauncher'
+ compileSdk 34
+ lint { disable 'ExpiredTargetSdkVersion' } // Direct Wi-Fi control for this sideloaded TV requires the pre-Q compatibility API.
+ defaultConfig { applicationId 'com.d4cx.tvlauncher'; minSdk 24; targetSdk 28; versionCode 10; versionName '2.8-mono' }
+ buildTypes { release { minifyEnabled true; shrinkResources true; signingConfig signingConfigs.debug; proguardFiles getDefaultProguardFile('proguard-android-optimize.txt') } }
+}
